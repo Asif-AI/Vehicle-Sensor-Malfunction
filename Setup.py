@@ -7,8 +7,6 @@ def get_requirements()->List[str]:
     return requirement_list
 
 
-
-
 setup(
     name =  "Sensor",
     version = "0.0.1",
