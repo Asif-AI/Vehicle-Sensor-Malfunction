@@ -1,4 +1,3 @@
-
 from sensor.entity.config_entity import TrainingPipelineConfig,DataIngestionConfig,DataValidationConfig,DataTransformationConfig
 from sensor.entity.artifact_entity import DataIngestionArtifact, DataValidationArtifact,DataTransformationArtifact
 from sensor.entity.artifact_entity import ModelEvaluationArtifact,ModelPusherArtifact,ModelTrainerArtifact
@@ -15,8 +14,6 @@ from sensor.components.model_pusher import ModelPusher
 from sensor.cloud_storage.s3_syncer import S3Sync
 from sensor.constant.s3_bucket import TRAINING_BUCKET_NAME
 from sensor.constant.training_pipeline import SAVED_MODEL_DIR
-
-
 
 class TrainPipeline:
     is_pipeline_running=False
@@ -37,7 +34,7 @@ class TrainPipeline:
         except  Exception as e:
             raise  SensorException(e,sys)
 
- def start_data_validaton(self,data_ingestion_artifact:DataIngestionArtifact)->DataValidationArtifact:
+    def start_data_validaton(self,data_ingestion_artifact:DataIngestionArtifact)->DataValidationArtifact:
         try:
             data_validation_config = DataValidationConfig(training_pipeline_config=self.training_pipeline_config)
             data_validation = DataValidation(data_ingestion_artifact=data_ingestion_artifact,
